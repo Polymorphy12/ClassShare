@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<android.support.constraint.ConstraintLayout-->
+<!--xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent">-->
+
+<!--<org.webrtc.SurfaceViewRenderer-->
+<!--android:id="@+id/vGLSurfaceViewCall"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent"-->
+<!--/>-->
+
+<!--</android.support.constraint.ConstraintLayout>-->
+
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical"
+    >
+    <!--
+    1. framelayout에 SerfaceView랑 RecyclerView를 겹쳐 넣는다.
+    2. framelayout 밑에는 EditText와 버튼을 집어넣는다.
+    3. EditText와 버튼의 높이만큼 framelayout 높이를 줄여준다.
+    -->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <org.webrtc.SurfaceViewRenderer
+            android:id="@+id/vGLSurfaceViewCall"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <Button
+                android:id="@+id/remote_controller"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="remote"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/bChatList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="150dp"
+                android:layout_marginRight="150dp"
+                android:layout_marginTop="250dp"
+                android:layout_marginBottom="60dp"
+                />
+            <!--android:layout_marginEnd="150dp"-->
+            <!--android:layout_marginEnd="150dp"
+                android:layout_marginRight="150dp"
+                android:layout_marginTop="250dp"
+                android:layout_marginBottom="60dp"-->
+            <LinearLayout
+                android:id="@+id/bChatEditText"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:layout_alignParentBottom="true"
+                >
+                <EditText
+                    android:id="@+id/bTypeChatContent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    tools:targetApi="o"
+                    android:importantForAutofill="no"
+                    android:layout_weight="50"
+                    android:textColor="#FFFFFF"
+                    android:imeOptions="actionDone"
+                    />
+
+                <Button
+                    android:id="@+id/bChatButton"
+                    android:layout_width="80dp"
+                    android:layout_height="60dp"
+                    android:gravity="center"
+                    android:layout_marginTop="0dp"
+                    android:text="Send" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </FrameLayout>
+
+
+</LinearLayout>

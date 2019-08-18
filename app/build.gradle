@@ -1,0 +1,123 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        applicationId "com.example.myapplication"
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    implementation 'com.github.nhancv:nc-android-webrtcpeer:2.1.0'
+    //Android annotation
+    /*
+    annotation은 또 뭐야?
+     */
+    annotationProcessor "org.androidannotations:androidannotations:4.6.0"
+    implementation 'org.androidannotations:androidannotations-api:4.6.0'
+    //Permission
+    /*
+        얘는 검증되지 않은 개발자가 만든 것 같은 깃헙 소스인데, 막 써도 상관 없는 것일까?
+        https://github.com/nhancv/nc-android-npermission
+        ctrl + 클릭 누르면 들어갈 수 있다.
+        Manifest에 권한 요청하는거 더 쉽게 만들어주는 라이브러리다. 잘 썼네.
+
+        인터넷, 와이파이/네트워크 상태 접근, 소리 녹음, 카메라, WRITE_EXTERNAL_STORAGE(얘 뭐하는 애?), READ_EXTERNAL_STORAGE (얘는 또 뭐하는 애?)
+    */
+    implementation 'com.github.nhancv:nc-android-npermission:1.4'
+    //Mosby mvp lib
+    /*
+    Mosby가 뭐야?
+    MVP (Model - View - Presenter) 패턴을 구현할 때 사용할 수 있는거라고 하네.
+    https://github.com/sockeqwe/mosby
+    깃헙 사이트를 보면 맨 처음 나와 있는 말이 뭐냐면
+    안드로이드용 Model-View-Presenter와 Model-View-Intent 라이브러리라고 해.
+
+    Q. MVP, MVI가 뭐지?
+
+    그리고 깃헙 사이트를 보면 mosby가 버전 3이 넘었다고 한다.
+    그리고 이런식으로 바꿔주라고 한다.
+    compile 'com.hannesdorfmann.mosby3:mvi:3.1.1'
+
+    Q. 충돌나지 않을까? 나 시간 없어. 개발 시간 길어지면 내일 발표 못하는데.
+    A. 괜찮아. 일단 2버전으로 구현한 다음에 백업해놓고, 3버전으로 migrate 해보지 뭐.
+    깃헙 사이트에서 migrate 하는 과정은 straightforward 하다고 말했잖아.
+    */
+    implementation 'com.hannesdorfmann.mosby:mvp:2.0.1'
+    /*
+     2.8.5 로 업데이트 되었는데 어떡하지? 다시 바꿀까?
+     일단 말이야, 원래 상태로 시작하고 나서 리팩토링을 해보자고.
+     */
+    implementation 'com.google.code.gson:gson:2.8.2'
+    //Async
+    /*
+        Rxandroid가 뭐야?
+        http://reactivex.io/intro.html
+        Rx는 ReactiveX의 준말이야.
+        비동기 데이터 스트림을 처리하는 API를 제공하는 라이브러리야.
+
+        마이크로소프트의 Volta라는 사장된 프로젝트에서 파생된 프로젝트다.
+        찾아보면 로고가 똑같다.
+        MS는 하나의 플랫폼 안에서 다양한 기술을 실행할 수 있는 환경을 만들고 싶었다.
+        그래서 Volta를 만들었다.
+
+        Volta로 MS는 이벤트 기반 동적언어인 Javascript를 정적 언어인 C#으로 변환시켜주려 했다.
+        이 과정에서 필연적으로 비동기 로직을 쉽게 처리하려 고민했을 것이다.
+
+        이 과정에서 Rx가 나오지 않았을까.
+
+        2012년 Rx는 오픈소스가 되었다.
+        MS는 Rx .NET, RxJS, Rx++을 공개했다.
+        넷플릭스는 RxJava를 공개했다.
+
+        Rx의 문제 해결과정을 이해하려면
+        리액티브 프로그래밍과 LINQ를 이해해야한다.
+        (후략)
+        <--- 여기까지 https://huns.me/development/2051 이 블로그 글 필자의 생각이었습니다~~
+        자세한건 시간 들여서  요약할 것.
+     */
+    implementation 'io.reactivex:rxandroid:1.2.0'
+    implementation 'io.reactivex:rxjava:1.3.0'
+
+
+
+
+    //리사이클러뷰 사용할 때 필요한 것들.
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+//
+//  floating action button 구현할 때 필요한 것것
+//
+    implementation 'com.android.support:design:27.1.1'
+
+    //okhttp 구현할 때 필요한 것
+    implementation 'com.squareup.okhttp3:okhttp:3.14.1'
+
+}
+
+
